@@ -1,5 +1,7 @@
 <h1>Browser Fingerprint Test</h1>
 
+<head> Test</head>
+<body>lijghflihshgfldskfjgb</body>
 <script>
   // Initialize the agent at application startup.
   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
@@ -11,6 +13,6 @@
     .then(result => {
       // This is the visitor identifier:
       const visitorId = result.visitorId
-      console.log(visitorId)
+      console.log("You just got fingerprinted!!!\n"+visitorId)
     })
 </script>
