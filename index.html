@@ -1,8 +1,29 @@
-<h1>Browser Fingerprint Test</h1>
+<h1>Cool Topics Group 30's Fingerprinting Test</h1>
 
-<head> Test</head>
-<body>lijghflihshgfldskfjgb</body>
+<!-- Import index.css-->
+<link rel="stylesheet" href="index.css">
+<br></br>
+<br></br>
+<br></br>
+
+
+<!-- Put fingerprint hash in head paragraph -->
+<body>The following hash might identify you on the internet:</body>
+<p id="fingerprint" style="background-color:rgb(99, 56, 56);">Uh oh, element didn't load. Yell at Carter.....</p>
+
+<!-- Set background of page to https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1-->
+<style>
+body {
+  background-image: url("https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+</style>
+
 <script>
+  window.onload = function() {
   // Initialize the agent at application startup.
   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
     .then(FingerprintJS => FingerprintJS.load())
@@ -12,7 +33,11 @@
     .then(fp => fp.get())
     .then(result => {
       // This is the visitor identifier:
-      const visitorId = result.visitorId
-      console.log("You just got fingerprinted!!!\n"+visitorId)
+      console.log("You just got fingerprinted!!!\n"+result.visitorId)
+
+      // Put fingerprint hash in head paragraph
+      document.getElementById("fingerprint").innerHTML = ""+result.visitorId;
+      
     })
+  }
 </script>
