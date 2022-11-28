@@ -14,7 +14,7 @@
 <!-- Set background of page to https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1-->
 <style>
 body {
-  background-image: url("https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://cdn.wallpapersafari.com/54/75/DBWbOx.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -22,7 +22,10 @@ body {
 
 </style>
 
+
 <script>
+
+  
   window.onload = function() {
   // Initialize the agent at application startup.
   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
@@ -35,9 +38,39 @@ body {
       // This is the visitor identifier:
       console.log("You just got fingerprinted!!!\n"+result.visitorId)
 
+      
       // Put fingerprint hash in head paragraph
       document.getElementById("fingerprint").innerHTML = ""+result.visitorId;
-      
+      //If localstorage fingerprint matches current fingerprint, display text
+      if (localStorage.getItem("fingerprint") == result.visitorId) {
+        document.getElementById("fingerprint").innerHTML = "Your fingerprint matches the one we cached last time! GitHub page databaes are insecure so here's your localstorage:\n"+localStorage.getItem("input")+"\n\n"+reult.visitorId;
+        //Set fingerprint element text to red
+        document.getElementById("fingerprint").style.color = "red";
+      }
+
+      //Add a text box with submit button and push that text
+      var input = document.createElement("input");
+      input.type = "text";
+      input.id = "input";
+      input.placeholder = "Enter something here";
+      document.body.appendChild(input);
+      var button = document.createElement("button");
+      button.innerHTML = "Submit";
+      button.id = "button";
+      document.body.appendChild(button);
+
+      //Give the button a function to submit text
+      document.getElementById("button").onclick = function() {
+        var input = document.getElementById("input").value;
+        console.log(input);
+
+        //Put fingerprint and text into localstorage
+        localStorage.setItem("fingerprint", result.visitorId);
+        localStorage.setItem("input", input);
+
+
+
+      };
     })
   }
 </script>
