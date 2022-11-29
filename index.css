@@ -1,11 +1,11 @@
 /* Force head, body, and p text to be white */
 body, p, h1, h2, h3, h4, h5, h6 {
-    color: rgb(8, 243, 40);
+    color: rgb(8, 8, 8);
 }
 
 /* Force all links to be white */
 a {
-    color: rgb(8, 243, 40);
+    color: rgb(8, 8, 8);
 }
 
 /* Force all text to be center aligned */

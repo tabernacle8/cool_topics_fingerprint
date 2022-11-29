@@ -41,7 +41,7 @@ body {
       document.getElementById("fingerprint").innerHTML = ""+result.visitorId;
       //If localstorage fingerprint matches current fingerprint, display text
       if (localStorage.getItem("fingerprint") == result.visitorId) {
-        document.getElementById("fingerprint").innerHTML = "Your fingerprint matches the one we cached last time! GitHub page databaes are insecure so here's your localstorage:\n"+localStorage.getItem("input")+".\n\n\nPrint:"+result.visitorId;
+        document.getElementById("fingerprint").innerHTML = "Your fingerprint matches the one we cached last time!\n"+localStorage.getItem("input")+".\n\n\nPrint:"+result.visitorId;
         //Set fingerprint element text to red
         document.getElementById("fingerprint").style.color = "red";
       }
